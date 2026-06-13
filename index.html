@@ -41,7 +41,7 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; }
+    html { scroll-behavior: smooth; font-size: 16px; scroll-padding-top: 90px; }
     body { font-family: var(--font-body); background: var(--cream); color: var(--text-dark); line-height: 1.7; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
     img { max-width: 100%; height: auto; display: block; }
     a { text-decoration: none; color: inherit; transition: var(--transition-fast); }
@@ -111,10 +111,10 @@
     /* ============================================
        HERO
        ============================================ */
-    #home { height: 100vh; min-height: 680px; position: relative; display: flex; align-items: center; overflow: hidden; }
+    #home { height: 100vh; min-height: 600px; position: relative; display: flex; align-items: center; overflow: hidden; }
     .hero-bg { position:absolute; inset:0; background-size:cover; background-position:center;
       /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-         IMAGE: Interior bar counter at night
+         IMAGE: Ora Café interior / terrace
          → Place your image at: images/hero-bg.jpg
          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
       background-image: url('images/hero-bg.jpg'); transform:scale(1.06); transition:transform 8s ease; }
@@ -370,21 +370,29 @@
       .about-grid { grid-template-columns:1fr; }
       .about-img-wrap { height:300px; }
       .about-text { padding:40px 24px; }
-      .masonry { columns:2; }
+      .masonry { columns:2; column-gap:0.6rem; }
+      .mitem-g { margin-bottom:0.6rem; }
       .test-grid { grid-template-columns:1fr; }
       .test-grid .tcard:last-child { display:block; }
       .foot-grid { grid-template-columns:1fr; }
       .foot-bottom { flex-direction:column; gap:0.8rem; text-align:center; }
       .hero h1 br { display:none; }
-      .hero-btns { flex-direction:column; align-items:flex-start; }
+      .hero-bg { background-position: center center; }
+      .hero-content { padding: 0 1.5rem; }
+      .hero h1 { font-size: clamp(2.4rem, 11vw, 3.2rem); max-width: 100%; }
+      .hero-btns { flex-direction:column; align-items:flex-start; width:100%; }
+      .hero-btns .btn { width: 100%; justify-content: center; }
       .contact-grid { grid-template-columns:1fr; }
       .frow { grid-template-columns:1fr; }
       .rform-wrap { padding:2rem 1.5rem; }
       .gallery-header { flex-direction:column; align-items:flex-start; gap:1rem; }
     }
     @media (max-width: 480px) {
-      .masonry { columns:1; }
+      .masonry { columns:2; }
       .strip-item { padding:1.2rem 1rem; }
+    }
+    @media (max-width: 380px) {
+      .hero h1 { font-size: clamp(2.1rem, 11vw, 2.6rem); }
     }
   </style>
 </head>
@@ -403,7 +411,7 @@
         <li><a href="#gallery">Gallery</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-      <a href="#contact" class="nav-cta">Reserve a Table</a>
+      <a href="#reservation" class="nav-cta">Reserve a Table</a>
       <button class="hamburger" id="hamburger" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
@@ -418,7 +426,7 @@
     <a href="#menu">Menu</a>
     <a href="#gallery">Gallery</a>
     <a href="#contact">Contact</a>
-    <a href="#contact" style="color:var(--gold)">Reserve a Table</a>
+    <a href="#reservation" style="color:var(--gold)">Reserve a Table</a>
   </div>
 
   <main>
@@ -426,7 +434,7 @@
     <!-- ============================================
          SECTION 1: HERO
          IMAGE NEEDED: images/hero-bg.jpg
-         → Use: Interior bar counter at night (Image 10 — first batch)
+         → Use: Ora Café outdoor terrace / interior shot (NEW — replace previous hero image)
          ============================================ -->
     <section id="home" aria-label="Welcome to Ora Café">
       <div class="hero-bg" id="heroBg"
@@ -441,7 +449,7 @@
         <h1>Where Every<br /><em>Moment</em> is<br />Savoured</h1>
         <p class="hero-sub">Where coffee, cuisine, and moments meet.</p>
         <div class="hero-btns">
-          <a href="#contact" class="btn btn-gold">Reserve a Table</a>
+          <a href="#reservation" class="btn btn-gold">Reserve a Table</a>
           <a href="#menu" class="btn btn-outline-light">Explore Menu</a>
         </div>
       </div>
@@ -489,7 +497,7 @@
             <div class="pillar"><div class="pillar-num">02</div><h5>Hospitality</h5><p>Warmth woven into every moment</p></div>
             <div class="pillar"><div class="pillar-num">03</div><h5>Experience</h5><p>Beautiful, memorable, complete</p></div>
           </div>
-          <a href="#contact" class="btn btn-dark" style="margin-top:1rem;"><span>Reserve Your Table</span></a>
+          <a href="#reservation" class="btn btn-dark" style="margin-top:1rem;"><span>Reserve Your Table</span></a>
         </div>
       </div>
 
@@ -1189,7 +1197,7 @@
           <ul>
             <li><a href="https://glovoapp.com/en/ke/nairobi/stores/ora-cafe-nbo" target="_blank" rel="noopener noreferrer">Order on Glovo</a></li>
             <li><a href="https://www.ubereats.com/ke/store/ora-cafe/DaRBz7tFVD20Gstl6l6wcg" target="_blank" rel="noopener noreferrer">Order on Uber Eats</a></li>
-            <li><a href="#contact">Reserve a Table</a></li>
+            <li><a href="#reservation">Reserve a Table</a></li>
           </ul>
         </div>
         <div class="foot-col">
